@@ -23,7 +23,7 @@ test: lint
 	@pytest -s -v --tb=native --capture=sys --cov grappa_http --cov-report term-missing
 
 coverage:
-	@coverage run --source http -m py.test
+	@coverage run --source grappa_http -m py.test
 	@coverage report
 
 bump:
