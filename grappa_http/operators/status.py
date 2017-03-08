@@ -47,6 +47,7 @@ class StatusOperator(BaseOperator):
 
         self.subject = res.status_code
         if isinstance(status, str):
-            self.subject = res.status
+            status = status.lower()
+            self.subject = res.status.lower()
 
         return self.subject == status, []

@@ -6,12 +6,12 @@
 
 |Build Status| |PyPI| |Coverage Status| |Documentation Status| |Stability| |Quality| |Versions|
 
-grappa-http
------------
+About
+-----
 
-`grappa`_ plugin for HTTP assertions.
+HTTP assertions plugin for `grappa`_.
 
-To get started, take a look to the `documentation`_ and `tutorial`_.
+To get started, take a look to the `documentation`_, `tutorial`_ and `examples`_.
 
 Features
 --------
@@ -48,6 +48,7 @@ Or install the latest sources from Github:
 .. _`grappa`: https://grappa.readthedocs.io
 .. _`documentation`: http://grappa-http.readthedocs.io
 .. _`tutorial`: http://grappa-http.readthedocs.io/en/latest/tutorial.html
+.. _`examples`: http://grappa-http.readthedocs.io/en/latest/examples.html
 
 .. |Build Status| image:: https://travis-ci.org/grappa-python/grappa-http.svg?branch=master
    :target: https://travis-ci.org/grappa-python/grappa-http

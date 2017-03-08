@@ -6,6 +6,7 @@ Contents
 
    intro
    tutorial
+   examples
    operators
    api
    contributing
