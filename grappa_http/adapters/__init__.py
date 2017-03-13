@@ -1,11 +1,12 @@
+from .base import BaseAdapter
 from .aiohttp import AioHttpAdapter
 from .requests import RequestsAdapter
 
-# Export symbols
-__all__ = ('adapters', 'match')
+# Module symbols to export
+__all__ = ('adapters', 'match', 'BaseAdapter')
 
 
-# Adapters
+# List of supported HTTP adapters
 adapters = (
     AioHttpAdapter,
     RequestsAdapter
@@ -14,7 +15,7 @@ adapters = (
 
 def match(res):
     """
-    Match adapter based on subject value
+    Match adapter based on response object using type inference.
     """
     for adapter in adapters:
         if adapter.test(res):

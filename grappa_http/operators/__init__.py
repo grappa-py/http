@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import functools
 
 # Module symbols to export
 __all__ = ('operators', 'get')
@@ -8,7 +9,10 @@ __all__ = ('operators', 'get')
 operators = (
     # Module name  # Operator class to import
     ('attributes', ),
-    ('status',     'StatusOperator'),
+    ('header',     'HeaderOperator'),
+    ('content',    'ContentTypeOperator'),
+    ('status',     'StatusOperator', 'OkStatusOperator',
+                   'ServerErrorStatusOperator', 'BadRequestStatusOperator'),
 )
 
 
@@ -16,9 +20,7 @@ def get():
     """
     Loads the built-in operators into the global test engine.
     """
-    acc = []
-
-    for operator in operators:
+    def reducer(acc, operator):
         module, symbols = operator[0], operator[1:]
         path = 'grappa_http.operators.{}'.format(module)
 
@@ -26,6 +28,6 @@ def get():
         operator = __import__(path, None, None, symbols)
 
         # Register operators in the test engine
-        acc += [getattr(operator, symbol) for symbol in symbols]
+        return acc + [getattr(operator, symbol) for symbol in symbols]
 
-    return acc
+    return functools.reduce(reducer, operators, [])

@@ -11,7 +11,7 @@ class RequestsAdapter(BaseAdapter):
 
     @staticmethod
     def test(res):
-        if not res:
+        if res is None:
             return False
 
         return all([
@@ -30,6 +30,10 @@ class RequestsAdapter(BaseAdapter):
     @property
     def url(self):
         return self.res.url
+
+    @property
+    def method(self):
+        return self.res.request.method
 
     @property
     def request(self):

@@ -35,7 +35,11 @@ Accessors
 ok
 ^^
 
-TBD
+bad_request
+^^^^^^^^^^^
+
+server_error
+^^^^^^^^^^^^
 
 
 Matchers
@@ -89,3 +93,41 @@ Asserts HTTP response status name or code.
     [1, 2, 3] | expect.to_not.ends_with.number(2)
     iter([1, 2, 3]) | expect.to_not.ends_with.numbers(1, 2)
     OrderedDict([('foo', 0), ('bar', 1)]) | expect.to_not.ends_with('foo')
+
+
+header
+^^^^^^
+
+headers
+^^^^^^^
+
+Asserts HTTP response header(s) presence and/or values.
+
+=======================  ========================
+ **Type**                matcher
+-----------------------  ------------------------
+ **Chained aliases**     ``equal`` ``to`` ``be`` ``of``
+-----------------------  ------------------------
+ **Related operators**   content_
+=======================  ========================
+
+**Assertion form**:
+
+TBD
+
+content
+^^^^^^^
+
+Asserts HTTP response content type value.
+
+=======================  ========================
+ **Type**                matcher
+-----------------------  ------------------------
+ **Chained aliases**     ``equal`` ``to`` ``be`` ``of`` ``type``
+-----------------------  ------------------------
+ **Related operators**   header_
+=======================  ========================
+
+**Assertion form**:
+
+TBD

@@ -3,11 +3,15 @@ from abc import ABCMeta, abstractproperty
 
 class BaseAdapter(object):
     """
-    BaseAdapter implements
+    BaseAdapter implements.
     """
 
     # Metaclass definition for Python 2 compatibility
     __metaclass__ = ABCMeta
+
+    @abstractproperty
+    def method(self):
+        pass
 
     @abstractproperty
     def status(self):
@@ -44,3 +48,11 @@ class BaseAdapter(object):
     @abstractproperty
     def elapsed(self):
         pass
+
+    def __repr__(self):
+        return '{}({} {} | {})'.format(
+            'HttpResponse',
+            self.method,
+            self.url,
+            self.headers
+        )
