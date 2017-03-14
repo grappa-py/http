@@ -9,6 +9,7 @@ __all__ = ('operators', 'get')
 operators = (
     # Module name  # Operator class to import
     ('attributes', ),
+    ('method',     'MethodOperator'),
     ('header',     'HeaderOperator'),
     ('content',    'ContentTypeOperator'),
     ('status',     'StatusOperator', 'OkStatusOperator',

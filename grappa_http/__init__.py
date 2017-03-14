@@ -25,9 +25,10 @@ Reference
 """
 # Export register function
 from .plugin import register
+from grappa import should, expect, use
 
 # Register Python operator
-__all__ = ('register',)
+__all__ = ('should', 'expect', 'register')
 
 # Package metadata
 __author__ = 'Tomas Aparicio'
@@ -35,3 +36,6 @@ __license__ = 'MIT'
 
 # Current package version
 __version__ = '0.1.0'
+
+# Self-register plugin in grappa
+use(register)

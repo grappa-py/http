@@ -34,15 +34,18 @@ class HeaderOperator(BaseOperator):
     # Operator keywords
     aliases = ('of', 'to', 'be', 'equal', 'match')
 
+    # Enable value diff
+    show_diff = True
+
     # Error message templates
     expected_message = Operator.Dsl.Message(
-        'a response that match header(s): "{value}"',
-        'a response that does not match header(s): "{value}"',
+        'a response that match header: "{value}"',
+        'a response that does not match header: "{value}"',
     )
 
     # Subject message template
     subject_message = Operator.Dsl.Message(
-        'a response with header(s): {value}',
+        'a header with value: {value}',
     )
 
     def match_header(self, headers, key, value, includes=False):
@@ -66,38 +69,46 @@ class HeaderOperator(BaseOperator):
 
         return True, None
 
-    def _match(self, res, headers, value=None, includes=False):
-        # Set subject headers
-        self.subject = res.headers
+    # def differ(self):
+    #     print('>>>> differ!')
+    #     return self.header
 
-        if not headers:
+    def _match(self, res, header, value=None, includes=False):
+        # Set subject headers
+        self.subject = res.headers.get(header)
+
+        if not header:
             return False, ['header argument cannot be empty']
 
-        if isinstance(headers, str):
-            headers = [headers]
+        if not isinstance(header, str):
+            return False, ['header must be a string']
 
         # Set expected headers
-        self.expected = headers
+        self.expected = value if value else header
 
         # Stores error reasons and header values
-        reasons = []
         values = []
+        reasons = []
 
-        for header in headers:
-            matches, reason = self.match_header(res.headers, header,
-                                                value,  includes=includes)
-            if not matches and reason:
-                reasons.append(reason)
+        matches, reason = self.match_header(res.headers, header,
+                                            value, includes=includes)
+        if not matches and reason:
+            reasons.append(reason)
 
-            header = res.headers.get(header)
-            if header:
-                values.append(header)
+        header = res.headers.get(header)
+        if header:
+            values.append(header)
 
         # Stores if the tests passed
         passed = len(reasons) == 0
 
+        # Set headers
+        self.header = header
+        # self.ctx.value = {}
+
         # Assign match value
         if value is None:
             self.ctx.value = values[0] if len(values) == 1 else values
+            self.ctx.yielded = values[0] if len(values) == 1 else values
 
         return passed, reasons
