@@ -54,6 +54,9 @@ class BodyOperator(BaseOperator):
         self.ctx.show_diff = True
         self.ctx.value = res.body
 
+        self.subject = res.body
+        self.expected = expected
+
         return expected == res.body, []
 
 
