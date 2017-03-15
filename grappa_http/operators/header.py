@@ -69,10 +69,6 @@ class HeaderOperator(BaseOperator):
 
         return True, None
 
-    # def differ(self):
-    #     print('>>>> differ!')
-    #     return self.header
-
     def _match(self, res, header, value=None, includes=False):
         # Set subject headers
         self.subject = res.headers.get(header)
@@ -104,11 +100,10 @@ class HeaderOperator(BaseOperator):
 
         # Set headers
         self.header = header
-        # self.ctx.value = {}
 
         # Assign match value
         if value is None:
             self.ctx.value = values[0] if len(values) == 1 else values
-            self.ctx.yielded = values[0] if len(values) == 1 else values
+            # self.ctx.yielded = values[0] if len(values) == 1 else values
 
         return passed, reasons

@@ -46,7 +46,7 @@ class ContentTypeOperator(BaseOperator):
     kind = Operator.Type.MATCHER
 
     # Operator keywords
-    operators = ('content',)
+    operators = ('content', 'content_type', 'ctype')
 
     # Operator aliases
     aliases = ('type', 'equal', 'to', 'be', 'of')

@@ -20,7 +20,25 @@ In a nutshell
 .. code-block:: python
 
     import requests
-    import grappa-http import grappa
+    import grappa-http import should
+
+    # Perform an HTTP request
+    res = requests.get('http://httpbin.org/user-agent')
+
+    # Test response status to be OK
+    res | should.be.ok
+    # Or alternatively using the status code
+    res | should.have.status(200)
+
+    # Test response body content type
+    res | should.have.content('json')
+
+    # Test response headers
+    res | should.have.header('Content-Type').that.should.be.equal('application/json')
+    res | should.have.header('Server').that.should.contain('nginx')
+
+    # Test response body
+    res | should.have.json.equal.to({'user-agent': 'requests'})
 
 Features
 --------

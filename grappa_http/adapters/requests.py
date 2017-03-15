@@ -45,11 +45,11 @@ class RequestsAdapter(BaseAdapter):
 
     @property
     def body(self):
-        return self.res.body()
+        return self.res.text
 
     @property
     def json(self):
-        return self.res.json(indent=4)
+        return self.res.json()
 
     @property
     def elapsed(self):
