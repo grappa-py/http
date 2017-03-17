@@ -4,10 +4,10 @@ import requests
 
 
 def test_body_operator(should):
-    pook.get('foo.com', reply=200, response_json={'foo': 'bar'})
+    pook.get('foo.com', reply=200, response_body='hello world')
     res = requests.get('http://foo.com')
 
-    res | should.have.body.equal.to('{\n    "foo": "bar"\n}')
+    res | should.have.body.equal.to('hello world')
 
     with pytest.raises(AssertionError):
         res | should.have.body('foo')

@@ -1,4 +1,4 @@
-.. image:: http://i.imgur.com/BIcvhtP.jpg
+.. image:: http://i.imgur.com/kKZPYut.jpg
    :width: 100%
    :alt: grappa logo
    :align: center
@@ -77,7 +77,7 @@ Or install the latest sources from Github:
 .. _`tutorial`: http://grappa-http.readthedocs.io/en/latest/tutorial.html
 .. _`examples`: http://grappa-http.readthedocs.io/en/latest/examples.html
 
-.. |Build Status| image:: https://travis-ci.org/grappa-python/grappa-http.svg?branch=master
+.. |Build Status| image:: https://travis-ci.org/grappa-python/http.svg?branch=master
    :target: https://travis-ci.org/grappa-python/grappa-http
 .. |PyPI| image:: https://img.shields.io/pypi/v/grappa-http.svg?maxAge=2592000?style=flat-square
    :target: https://pypi.python.org/pypi/grappa-http
