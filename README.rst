@@ -68,7 +68,7 @@ Or install the latest sources from Github:
 
 .. code-block:: bash
 
-    pip install -e git+git://github.com/grappa-python/http.git#egg=grappa
+    pip install -e git+git://github.com/grappa-py/http.git#egg=grappa
 
 
 .. _Python: http://python.org
@@ -77,16 +77,16 @@ Or install the latest sources from Github:
 .. _`tutorial`: http://grappa-http.readthedocs.io/en/latest/tutorial.html
 .. _`examples`: http://grappa-http.readthedocs.io/en/latest/examples.html
 
-.. |Build Status| image:: https://travis-ci.org/grappa-python/http.svg?branch=master
-   :target: https://travis-ci.org/grappa-python/grappa-http
+.. |Build Status| image:: https://travis-ci.org/grappa-py/http.svg?branch=master
+   :target: https://travis-ci.org/grappa-py/grappa-http
 .. |PyPI| image:: https://img.shields.io/pypi/v/grappa-http.svg?maxAge=2592000?style=flat-square
    :target: https://pypi.python.org/pypi/grappa-http
-.. |Coverage Status| image:: https://coveralls.io/repos/github/grappa-python/http/badge.svg?branch=master
-   :target: https://coveralls.io/github/grappa-python/http?branch=master
+.. |Coverage Status| image:: https://coveralls.io/repos/github/grappa-py/http/badge.svg?branch=master
+   :target: https://coveralls.io/github/grappa-py/http?branch=master
 .. |Documentation Status| image:: https://readthedocs.org/projects/grappa-http/badge/?version=latest
    :target: http://grappa-http.readthedocs.io/en/latest/?badge=latest
-.. |Quality| image:: https://codeclimate.com/github/grappa-python/http/badges/gpa.svg
-   :target: https://codeclimate.com/github/grappa-python/http
+.. |Quality| image:: https://codeclimate.com/github/grappa-py/http/badges/gpa.svg
+   :target: https://codeclimate.com/github/grappa-py/http
    :alt: Code Climate
 .. |Stability| image:: https://img.shields.io/pypi/status/grappa-http.svg
    :target: https://pypi.python.org/pypi/grappa-http

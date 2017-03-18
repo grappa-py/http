@@ -66,7 +66,7 @@ setup(
     description=(
         'HTTP assertion plugin for grappa'
     ),
-    url='https://github.com/grappa-python/http',
+    url='https://github.com/grappa-py/http',
     license='MIT',
     long_description=readme + '\n\n' + history,
     py_modules=['grappa_http'],
