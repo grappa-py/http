@@ -3,6 +3,7 @@ import pytest
 import requests
 
 
+@pook.on
 def test_content_operator(should):
     pook.get('foo.com', reply=200, response_type='json')
     requests.get('http://foo.com') | should.have.content('json')

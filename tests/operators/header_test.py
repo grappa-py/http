@@ -3,6 +3,7 @@ import pytest
 import requests
 
 
+@pook.on
 def test_header_presence(should):
     pook.get('foo.com', reply=200, response_type='json')
     res = requests.get('http://foo.com')
@@ -14,6 +15,7 @@ def test_header_presence(should):
         res | should.have.header('Server')
 
 
+@pook.on
 def test_header_value(should):
     pook.get('foo.com', reply=200, response_type='json')
     res = requests.get('http://foo.com')

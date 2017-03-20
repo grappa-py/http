@@ -9,7 +9,7 @@
 About
 -----
 
-HTTP assertions plugin for `grappa`_.
+HTTP request/response assertion plugin for `grappa`_.
 
 To get started, take a look to the `documentation`_, `tutorial`_ and `examples`_.
 
@@ -20,7 +20,7 @@ In a nutshell
 .. code-block:: python
 
     import requests
-    import grappa-http import should
+    import grappa_http import should
 
     # Perform an HTTP request
     res = requests.get('http://httpbin.org/user-agent')

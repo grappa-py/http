@@ -1,33 +1,37 @@
 # -*- coding: utf-8 -*-
+from .json import JsonOperator
 from .base import BaseOperator, Operator
 
 
 class BodyOperator(BaseOperator):
     """
-    Asserts HTTP response body content.
+    Asserts HTTP response body content as string.
 
     Example::
 
         # Should style
-        res | should.be.content('json')
-        res | should.be.content.of('xml')
-        res | should.have.response.content.type('html')
-        res | should.have.response.content.type('application/json')
-        res | should.have.response.content.equal.to('application/json')
+        res | should.have.body('hello world')
+        res | should.have.body.equal.to('hello world')
+        res | should.have.body.match.to(r'(\w+) world$')
+        res | should.have.body.to.contain('world')
 
         # Should style - negation form
-        res | should.not_have.content('json')
-        res | should.not_have.content.of('json')
+        res | should.not_have.body('hello world')
+        res | should.not_have.body.equal.to('hello world')
+        res | should.have.body.match.to(r'(\w+) world$')
+        res | should.not_have.body.to.contain('world')
 
         # Expect style
-        res | expect.to.have.content('json')
-        res | expect.to.have.content.of('xml')
-        res | expect.to.have.content.type('html')
+        res | expect.to.have.body('hello world')
+        res | expect.to.have.body.equal.to('hello world')
+        res | expect.to.have.body.to.match(r'(\w+) world$')
+        res | expect.to.have.body.to.contain('world')
 
         # Expect style - negation form
-        res | expect.to.not_have.content('json')
-        res | expect.to.not_have.content.of('xml')
-        res | expect.to.not_have.content.type('html')
+        res | expect.to_not.have.body('hello world')
+        res | expect.to_not.have.body.equal.to('hello world')
+        res | expect.to_not.have.body.to.match(r'(\w+) world$')
+        res | expect.to_not.have.body.to.contain('world')
     """
 
     # Defines operator kind
@@ -37,79 +41,54 @@ class BodyOperator(BaseOperator):
     operators = ('body', 'data')
 
     # Operator aliases
-    aliases = ('equal', 'to', 'be', 'of')
+    aliases = ('equal', 'to', 'be')
+
+    # List of suboperators
+    suboperators = (
+        JsonOperator,
+    )
+
+    # Enable raw reporting mode for this operator
+    raw_mode = True
 
     # Error message templates
     expected_message = Operator.Dsl.Message(
-        'a response content type that matches with "{value}"',
-        'a response content type that does not match with "{value}"',
+        'a response body data equal to: {value}',
+        'a response body data not equal to: {value}',
     )
 
     # Subject message template
     subject_message = Operator.Dsl.Message(
-        'a response content type equal to "{value}"',
+        'a response body with data: {value}',
     )
+
+    def _on_access(self, res):
+        self.ctx.subject = res.body
+
+    def get_body(self, res):
+        if isinstance(res, str):
+            return res
+        if hasattr(res, 'body'):
+            return res.body
+        return None
 
     def _match(self, res, expected):
         self.ctx.show_diff = True
-        self.ctx.value = res.body
 
+        # Get response body data
+        body = self.get_body(res)
+
+        if not isinstance(expected, str):
+            return False, ['body expectation must be a string']
+
+        if body is None:
+            return False, ['body is empty or cannot be readed']
+
+        if len(body) == 0:
+            return False, ['body is empty']
+
+        self.ctx.value = res.body
         self.subject = res.body
         self.expected = expected
 
-        return expected == res.body, []
-
-
-class JsonOperator(BaseOperator):
-    """
-    Asserts HTTP response body content.
-
-    Example::
-
-        # Should style
-        res | should.be.content('json')
-        res | should.be.content.of('xml')
-        res | should.have.response.content.type('html')
-        res | should.have.response.content.type('application/json')
-        res | should.have.response.content.equal.to('application/json')
-
-        # Should style - negation form
-        res | should.not_have.content('json')
-        res | should.not_have.content.of('json')
-
-        # Expect style
-        res | expect.to.have.content('json')
-        res | expect.to.have.content.of('xml')
-        res | expect.to.have.content.type('html')
-
-        # Expect style - negation form
-        res | expect.to.not_have.content('json')
-        res | expect.to.not_have.content.of('xml')
-        res | expect.to.not_have.content.type('html')
-    """
-
-    # Defines operator kind
-    kind = Operator.Type.MATCHER
-
-    # Operator keywords
-    operators = ('json', 'json_body')
-
-    # Operator aliases
-    aliases = ('equal', 'to', 'be', 'of')
-
-    # Error message templates
-    expected_message = Operator.Dsl.Message(
-        'a response content type that matches with "{value}"',
-        'a response content type that does not match with "{value}"',
-    )
-
-    # Subject message template
-    subject_message = Operator.Dsl.Message(
-        'a response content type equal to "{value}"',
-    )
-
-    def _match(self, res, expected):
-        self.ctx.show_diff = True
-        self.ctx.value = res.json
-
-        return res.json == expected, ['invalid json bodies']
+        return expected == body, []
