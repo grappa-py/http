@@ -30,6 +30,9 @@ class MethodOperator(BaseOperator):
     # Operator aliases
     aliases = ('name', 'equal', 'to', 'be', 'of')
 
+    # Show match diff on error
+    show_diff = True
+
     # Error message templates
     expected_message = Operator.Dsl.Message(
         'a request method that is equal to "{value}"',

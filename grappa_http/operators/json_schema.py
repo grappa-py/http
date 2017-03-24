@@ -39,6 +39,9 @@ class JsonSchemaOperator(BaseOperator):
     # Enable raw reporting mode for this operator
     raw_mode = True
 
+    # Show match diff on error
+    show_diff = True
+
     # Error message templates
     expected_message = Operator.Dsl.Message(
         'a response JSON body that matches the JSONSchema: {value}',

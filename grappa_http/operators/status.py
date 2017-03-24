@@ -30,6 +30,9 @@ class StatusOperator(BaseOperator):
     # Operator keywords
     aliases = ('equal', 'to', 'be')
 
+    # Show match diff on error
+    show_diff = True
+
     # Error message templates
     expected_message = Operator.Dsl.Message(
         'a response status equal to {value}',

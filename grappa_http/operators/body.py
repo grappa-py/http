@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from .json import JsonOperator
+from .json_schema import JsonSchemaOperator
 from .base import BaseOperator, Operator
 
 
@@ -43,9 +44,13 @@ class BodyOperator(BaseOperator):
     # Operator aliases
     aliases = ('equal', 'to', 'be')
 
+    # Show match diff on error
+    show_diff = True
+
     # List of suboperators
     suboperators = (
         JsonOperator,
+        JsonSchemaOperator,
     )
 
     # Enable raw reporting mode for this operator

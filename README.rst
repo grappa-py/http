@@ -40,6 +40,9 @@ In a nutshell
     # Test response body
     res | should.have.json.equal.to({'user-agent': 'requests'})
 
+    # Validate response JSON with JSONSchema
+    res | should.have.json.equal.to({'user-agent': 'requests'})
+
 Features
 --------
 
