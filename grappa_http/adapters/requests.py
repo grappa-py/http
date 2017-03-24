@@ -56,5 +56,9 @@ class RequestsAdapter(BaseAdapter):
         return self.res.elapsed
 
     @property
+    def cookies(self):
+        return self.res.cookies
+
+    @property
     def encoding(self):
         return self.res.encoding

@@ -13,6 +13,10 @@ HTTP request/response assertion plugin for `grappa`_.
 
 To get started, take a look to the `documentation`_, `tutorial`_ and `examples`_.
 
+Status
+------
+
+``grappa-http`` is still **beta quality** software.
 
 In a nutshell
 -------------
@@ -41,7 +45,7 @@ In a nutshell
     res | should.have.json.equal.to({'user-agent': 'requests'})
 
     # Validate response JSON with JSONSchema
-    res | should.have.json.equal.to({'user-agent': 'requests'})
+    res | should.have.jsonschema.equal.to({'user-agent': 'requests'})
 
 Features
 --------
@@ -57,6 +61,11 @@ Features
 -  Testing framework agnostic. Works with ``unittest``, ``nosetests``, ``pytest``
 -  Works with Python 2.6+, 3+ and PyPy.
 
+Supported HTTP clients
+----------------------
+
+-  [x] `requests`_
+-  [_] `aiohttp`_
 
 Installation
 ------------
@@ -79,6 +88,8 @@ Or install the latest sources from Github:
 .. _`documentation`: http://grappa-http.readthedocs.io
 .. _`tutorial`: http://grappa-http.readthedocs.io/en/latest/tutorial.html
 .. _`examples`: http://grappa-http.readthedocs.io/en/latest/examples.html
+.. _`requests`: http://docs.python-requests.org/en/master/
+.. _`aiohttp`: http://aiohttp.readthedocs.io/en/stable/
 
 .. |Build Status| image:: https://travis-ci.org/grappa-py/http.svg?branch=master
    :target: https://travis-ci.org/grappa-py/grappa-http

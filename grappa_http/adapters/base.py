@@ -46,6 +46,10 @@ class BaseAdapter(object):
         pass
 
     @abstractproperty
+    def cookies(self):
+        pass
+
+    @abstractproperty
     def elapsed(self):
         pass
 
