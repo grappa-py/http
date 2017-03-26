@@ -33,7 +33,7 @@ def read_version(package):
 
 
 # Get package current version
-version = read_version('grappa')
+version = read_version('grappa_http')
 
 
 class PyTest(TestCommand):
