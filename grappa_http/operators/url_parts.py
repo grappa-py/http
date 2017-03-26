@@ -122,28 +122,20 @@ class UrlHostnameOperator(UrlBaseOperator):
     Example::
 
         # Should style
-        res | should.have.url.hostname('http')
-        res | should.have.url.protocol('https')
-        res | should.have.url.schema('http')
-        res | should.have.url.schema('https')
+        res | should.have.url.hostname('foo.com')
+        res | should.have.url.hostname('foo', strict=False)
 
         # Should style - negation form
-        res | should.not_have.url.protocol('http')
-        res | should.not_have.url.protocol('https')
-        res | should.not_have.url.schema('http')
-        res | should.not_have.url.schema('https')
+        res | should.not_have.url.hostname('foo.com')
+        res | should.not_have.url.hostname('foo', strict=False)
 
         # Expect style
-        res | expect.to.have.url.protocol('http')
-        res | expect.to.have.url.protocol('https')
-        res | expect.to.have.url.schema('http')
-        res | expect.to.have.url.schema('https')
+        res | expect.to.have.url.hostname('foo.com')
+        res | expect.to.have.url.hostname('foo', strict=False)
 
         # Expect style - negation form
-        res | expect.to_not.have.url.protocol('http')
-        res | expect.to_not.have.url.protocol('https')
-        res | expect.to_not.have.url.schema('http')
-        res | expect.to_not.have.url.schema('https')
+        res | expect.to_not.have.url.hostname('foo.com')
+        res | expect.to_not.have.url.hostname('foo', strict=False)
     """
 
     # Defines operator kind
@@ -187,28 +179,16 @@ class UrlPortOperator(UrlBaseOperator):
     Example::
 
         # Should style
-        res | should.have.url.hostname('http')
-        res | should.have.url.protocol('https')
-        res | should.have.url.schema('http')
-        res | should.have.url.schema('https')
+        res | should.have.url.port(80)
 
         # Should style - negation form
-        res | should.not_have.url.protocol('http')
-        res | should.not_have.url.protocol('https')
-        res | should.not_have.url.schema('http')
-        res | should.not_have.url.schema('https')
+        res | should.not_have.url.port(80)
 
         # Expect style
-        res | expect.to.have.url.protocol('http')
-        res | expect.to.have.url.protocol('https')
-        res | expect.to.have.url.schema('http')
-        res | expect.to.have.url.schema('https')
+        res | expect.to.have.url.port(80)
 
         # Expect style - negation form
-        res | expect.to_not.have.url.protocol('http')
-        res | expect.to_not.have.url.protocol('https')
-        res | expect.to_not.have.url.schema('http')
-        res | expect.to_not.have.url.schema('https')
+        res | expect.to_not.have.url.port(80)
     """
 
     # Defines operator kind
@@ -248,28 +228,20 @@ class UrlPathOperator(UrlBaseOperator):
     Example::
 
         # Should style
-        res | should.have.url.hostname('http')
-        res | should.have.url.protocol('https')
-        res | should.have.url.schema('http')
-        res | should.have.url.schema('https')
+        res | should.have.url.path('/foo/baz')
+        res | should.have.url.path('foo', strict=False)
 
         # Should style - negation form
-        res | should.not_have.url.protocol('http')
-        res | should.not_have.url.protocol('https')
-        res | should.not_have.url.schema('http')
-        res | should.not_have.url.schema('https')
+        res | should.not_have.url.path('/foo/baz')
+        res | should.not_have.url.path('foo', strict=False)
 
         # Expect style
-        res | expect.to.have.url.protocol('http')
-        res | expect.to.have.url.protocol('https')
-        res | expect.to.have.url.schema('http')
-        res | expect.to.have.url.schema('https')
+        res | epect.to.have.url.path('/foo/baz')
+        res | epect.to.have.url.path('foo', strict=False)
 
         # Expect style - negation form
-        res | expect.to_not.have.url.protocol('http')
-        res | expect.to_not.have.url.protocol('https')
-        res | expect.to_not.have.url.schema('http')
-        res | expect.to_not.have.url.schema('https')
+        res | epect.to_not.have.url.path('/foo/baz')
+        res | epect.to_not.have.url.path('foo', strict=False)
     """
 
     # Defines operator kind
@@ -313,28 +285,24 @@ class UrlParamsOperator(UrlBaseOperator):
     Example::
 
         # Should style
-        res | should.have.url.hostname('http')
-        res | should.have.url.protocol('https')
-        res | should.have.url.schema('http')
-        res | should.have.url.schema('https')
+        res | should.have.url.query({'foo': 'bar'})  # value
+        res | should.have.url.query({'foo': True}) # presence
+        res | should.have.url.query({'foo': 'b'}, strict=False) # contains
 
         # Should style - negation form
-        res | should.not_have.url.protocol('http')
-        res | should.not_have.url.protocol('https')
-        res | should.not_have.url.schema('http')
-        res | should.not_have.url.schema('https')
+        res | should.not_have.url.query({'foo': 'bar'})  # value
+        res | should.not_have.url.query({'foo': True}) # presence
+        res | should.not_have.url.query({'foo': 'b'}, strict=False) # contains
 
         # Expect style
-        res | expect.to.have.url.protocol('http')
-        res | expect.to.have.url.protocol('https')
-        res | expect.to.have.url.schema('http')
-        res | expect.to.have.url.schema('https')
+        res | expect.to.have.url.query({'foo': 'bar'})  # value
+        res | expect.to.have.url.query({'foo': True}) # presence
+        res | expect.to.have.url.query({'foo': 'b'}, strict=False) # contains
 
         # Expect style - negation form
-        res | expect.to_not.have.url.protocol('http')
-        res | expect.to_not.have.url.protocol('https')
-        res | expect.to_not.have.url.schema('http')
-        res | expect.to_not.have.url.schema('https')
+        res | expect.to.have.url.query({'foo': 'bar'})  # value
+        res | expect.to.have.url.query({'foo': True}) # presence
+        res | expect.to.have.url.query({'foo': 'b'}, strict=False) # contains
     """
 
     # Defines operator kind

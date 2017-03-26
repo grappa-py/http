@@ -12,28 +12,40 @@ class UrlOperator(UrlBaseOperator):
     Example::
 
         # Should style
-        res | should.have.body('hello world')
-        res | should.have.body.equal.to('hello world')
-        res | should.have.body.match.to(r'(\w+) world$')
-        res | should.have.body.to.contain('world')
+        res | should.have.url('http://foo.org')
+        res | should.have.url('foo.org', strict=False)
+        res | should.have.url.hostname('foo.org')
+        res | should.have.url.port(80)
+        res | should.have.url.protocol('http')
+        res | should.have.url.path('/bar/baz')
+        res | should.have.url.query({'x': 'y', 'z': True})
 
         # Should style - negation form
-        res | should.not_have.body('hello world')
-        res | should.not_have.body.equal.to('hello world')
-        res | should.have.body.match.to(r'(\w+) world$')
-        res | should.not_have.body.to.contain('world')
+        res | should.not_have.url('http://foo.org')
+        res | should.not_have.url('foo.org', strict=False)
+        res | should.not_have.url.hostname('foo.org')
+        res | should.not_have.url.port(80)
+        res | should.not_have.url.protocol('http')
+        res | should.not_have.url.path('/bar/baz')
+        res | should.not_have.url.query({'x': 'y', 'z': True})
 
         # Expect style
-        res | expect.to.have.body('hello world')
-        res | expect.to.have.body.equal.to('hello world')
-        res | expect.to.have.body.to.match(r'(\w+) world$')
-        res | expect.to.have.body.to.contain('world')
+        res | expect.to.have.url('http://foo.org')
+        res | expect.to.have.url('foo.org', strict=False)
+        res | expect.to.have.url.hostname('foo.org')
+        res | expect.to.have.url.port(80)
+        res | expect.to.have.url.protocol('http')
+        res | expect.to.have.url.path('/bar/baz')
+        res | expect.to.have.url.query({'x': 'y', 'z': True})
 
         # Expect style - negation form
-        res | expect.to_not.have.body('hello world')
-        res | expect.to_not.have.body.equal.to('hello world')
-        res | expect.to_not.have.body.to.match(r'(\w+) world$')
-        res | expect.to_not.have.body.to.contain('world')
+        res | expect.to_not.have.url('http://foo.org')
+        res | expect.to_not.have.url('foo.org', strict=False)
+        res | expect.to_not.have.url.hostname('foo.org')
+        res | expect.to_not.have.url.port(80)
+        res | expect.to_not.have.url.protocol('http')
+        res | expect.to_not.have.url.path('/bar/baz')
+        res | expect.to_not.have.url.query({'x': 'y', 'z': True})
     """
 
     # Defines operator kind

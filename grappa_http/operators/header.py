@@ -13,15 +13,19 @@ class HeaderOperator(BaseOperator):
     Example::
 
         # Should style
+        res | should.have.header('Content-Type', 'application/json')
         res | should.have.header('Content-Type').equal.to('application/json')
 
         # Should style - negation form
+        res | should.not_have.header('Server', 'nginx')
         res | should.not_have.header('Server').equal.to('nginx')
 
         # Expect style
+        res | expect.to.have.header('Server', 'nginx')
         res | expect.to.have.header('server').equal.to('nginx')
 
         # Expect style - negation form
+        res | expect.to_not.have.header('Server', 'nginx')
         res | expect.to_not.have.header('server').equal.to('nginx')
     """
 
@@ -32,7 +36,7 @@ class HeaderOperator(BaseOperator):
     operators = ('header', 'headers')
 
     # Operator keywords
-    aliases = ('of', 'to', 'be', 'equal', 'match')
+    aliases = ('of', 'to', 'be', 'equal')
 
     # Enable value diff
     show_diff = True

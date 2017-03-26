@@ -4,7 +4,7 @@ from .base import BaseOperator, Operator
 
 class StatusOperator(BaseOperator):
     """
-    Asserts HTTP response status.
+    Asserts HTTP response status code or name.
 
     Example::
 

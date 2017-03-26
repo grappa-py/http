@@ -11,20 +11,20 @@ class JsonSchemaOperator(BaseOperator):
     Example::
 
         # Should style
-        res | should.have.json_schema({'foo': 'bar'})
-        res | should.have.json_schema({'foo': 'bar'})
+        res | should.have.jsonschema(schema)
+        res | should.have.jsonschema.equal.to(schema)
 
         # Should style - negation form
-        res | should.not_have.json({'foo': 'bar'})
-        res | should.not_have.json.equal.to({'foo': 'bar'})
+        res | should.have_not.jsonschema(schema)
+        res | should.have_not.jsonschema.equal.to(schema)
 
         # Expect style
-        res | expect.to.have.json({'foo': 'bar'})
-        res | expect.to.have.json.equal.to({'foo': 'bar'})
+        res | expect.to.have.jsonschema(schema)
+        res | expect.to.have.jsonschema.equal.to(schema)
 
         # Expect style - negation form
-        res | expect.to_not.have.json({'foo': 'bar'})
-        res | expect.to_not.have.json.equal.to({'foo': 'bar'})
+        res | expect.to_not.have.jsonschema(schema)
+        res | expect.to_not.have.jsonschema.equal.to(schema)
     """
 
     # Defines operator kind
@@ -34,7 +34,7 @@ class JsonSchemaOperator(BaseOperator):
     operators = ('json_schema', 'jsonschema')
 
     # Operator aliases
-    aliases = ('equal', 'to', 'be')
+    aliases = ('equal', 'to', 'be', 'match')
 
     # Enable raw reporting mode for this operator
     raw_mode = True

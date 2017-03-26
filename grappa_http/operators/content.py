@@ -35,18 +35,20 @@ class ContentTypeOperator(BaseOperator):
         res | expect.to.have.content('json')
         res | expect.to.have.content.of('xml')
         res | expect.to.have.content.type('html')
+        res | expect.to.have.response.content.equal.to('application/json')
 
         # Expect style - negation form
         res | expect.to.not_have.content('json')
         res | expect.to.not_have.content.of('xml')
         res | expect.to.not_have.content.type('html')
+        res | expect.to_not.have.response.content.equal.to('application/json')
     """
 
     # Defines operator kind
     kind = Operator.Type.MATCHER
 
     # Operator keywords
-    operators = ('content', 'content_type', 'ctype')
+    operators = ('content', 'ctype')
 
     # Operator aliases
     aliases = ('type', 'equal', 'to', 'be', 'of')

@@ -5,7 +5,6 @@ Contents
    :maxdepth: 1
 
    intro
-   tutorial
    examples
    operators
    api

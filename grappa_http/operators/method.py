@@ -4,7 +4,7 @@ from .base import BaseOperator, Operator
 
 class MethodOperator(BaseOperator):
     """
-    Asserts HTTP request/response method.
+    Asserts HTTP request method.
 
     Example::
 
