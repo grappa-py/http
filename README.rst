@@ -18,8 +18,8 @@ Status
 
 ``grappa-http`` is still **beta quality** software.
 
-In a nutshell
--------------
+Showcase
+--------
 
 .. code-block:: python
 
@@ -129,7 +129,7 @@ Or install the latest sources from Github:
 .. _`aiohttp`: http://aiohttp.readthedocs.io/en/stable/
 
 .. |Build Status| image:: https://travis-ci.org/grappa-py/http.svg?branch=master
-   :target: https://travis-ci.org/grappa-py/grappa-http
+   :target: https://travis-ci.org/grappa-py/http
 .. |PyPI| image:: https://img.shields.io/pypi/v/grappa-http.svg?maxAge=2592000?style=flat-square
    :target: https://pypi.python.org/pypi/grappa-http
 .. |Coverage Status| image:: https://coveralls.io/repos/github/grappa-py/http/badge.svg?branch=master
