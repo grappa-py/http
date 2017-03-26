@@ -76,17 +76,23 @@ class JsonOperator(BaseOperator):
 
     def _match(self, res, expected):
         data = self.get_json(res)
-        self.ctx.show_diff = True
+        if data is None:
+            return False, ['empty JSON response']
 
         # Read expected JSON as string
         if isinstance(expected, str):
             expected = json.loads(expected)
         else:
             self.diff_expected = json.dumps(expected, indent=4)
+            # Re-deserialize JSON to have full unicode compatibility
+            expected = json.loads(self.diff_expected)
 
         if data is None:
             return False, ['invalid body response: cannot read JSON']
 
         self.diff_subject = json.dumps(data, indent=4)
+        if hasattr(self.diff_subject, 'decode'):  # Python 2
+            self.diff_subject = self.diff_subject.decode('ascii')
+
         self.subject = data
         return data == expected, ['missmatched JSON bodies']

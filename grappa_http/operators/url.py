@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-from .base import BaseOperator, Operator
+from .base import Operator
 from .url_parts import (UrlProtocolOperator, UrlHostnameOperator,
-                        UrlPortOperator, UrlPathOperator, UrlParamsOperator)
+                        UrlPortOperator, UrlPathOperator,
+                        UrlParamsOperator, UrlBaseOperator)
 
 
-class UrlOperator(BaseOperator):
+class UrlOperator(UrlBaseOperator):
     """
     Asserts HTTP request target URL.
 
@@ -72,14 +73,7 @@ class UrlOperator(BaseOperator):
 
     def _on_access(self, res):
         if hasattr(res, 'url'):
-            self.ctx.subject = res.url
-
-    def get_url(self, res):
-        if isinstance(res, str):
-            return res
-        if hasattr(res, 'url'):
-            return res.url
-        return None
+            self.ctx.subject = str(res.url)
 
     def _match(self, res, expected, strict=False):
         # Get response url data

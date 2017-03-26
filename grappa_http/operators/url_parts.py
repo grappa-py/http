@@ -3,9 +3,9 @@ from functools import reduce
 from .base import BaseOperator, Operator
 
 try:
-    from urllib.parse import urlparse, parse_qs
-except ImportError:
     from urlparse import urlparse, parse_qs
+except ImportError:
+    from urllib.parse import urlparse, parse_qs
 
 
 class UrlBaseOperator(BaseOperator):
@@ -26,7 +26,7 @@ class UrlBaseOperator(BaseOperator):
         if isinstance(res, str):
             return res
         if hasattr(res, 'url'):
-            return res.url
+            return str(res.url)
         return None
 
     def parse_url(self, url):
@@ -41,12 +41,10 @@ class UrlBaseOperator(BaseOperator):
     def _match(self, res, value, **kw):
         # Get response url
         raw_url = self.get_url(res)
-
         if not raw_url:
             return False, ['cannot parse request URL']
 
         url = self.parse_url(raw_url)
-
         if not url:
             return False, ['url is empty or cannot be readed']
 

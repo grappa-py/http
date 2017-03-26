@@ -66,7 +66,7 @@ class HeaderOperator(BaseOperator):
                 key, value, headers[key]
             )
 
-        if not includes and value and headers[key] != value:
+        if not includes and value and str(headers[key]) != str(value):
             return False, 'header "{}" is not equal: "{}" != "{}"'.format(
                 key, headers[key], value
             )

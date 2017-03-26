@@ -11,7 +11,7 @@ operators = (
     ('attributes', ),
     ('url',         'UrlOperator'),
     ('body',        'BodyOperator'),
-    ('json',        'JsonOperator'),
+    ('json_body',   'JsonOperator'),
     ('method',      'MethodOperator'),
     ('header',      'HeaderOperator'),
     ('json_schema', 'JsonSchemaOperator'),

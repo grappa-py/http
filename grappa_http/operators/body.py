@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from .json import JsonOperator
+from .json_body import JsonOperator
 from .json_schema import JsonSchemaOperator
 from .base import BaseOperator, Operator
 
@@ -69,13 +69,13 @@ class BodyOperator(BaseOperator):
 
     def _on_access(self, res):
         if hasattr(res, 'body'):
-            self.ctx.subject = res.body
+            self.ctx.subject = str(res.body)
 
     def get_body(self, res):
         if isinstance(res, str):
             return res
         if hasattr(res, 'body'):
-            return res.body
+            return str(res.body)
         return None
 
     def _match(self, res, expected):
