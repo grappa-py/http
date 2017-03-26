@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-from .json import JsonOperator
-from .json_schema import JsonSchemaOperator
 from .base import BaseOperator, Operator
+from .url_parts import (UrlProtocolOperator, UrlHostnameOperator,
+                        UrlPortOperator, UrlPathOperator, UrlParamsOperator)
 
 
-class BodyOperator(BaseOperator):
+class UrlOperator(BaseOperator):
     """
-    Asserts HTTP response body content as string.
+    Asserts HTTP request target URL.
 
     Example::
 
@@ -39,10 +39,19 @@ class BodyOperator(BaseOperator):
     kind = Operator.Type.MATCHER
 
     # Operator keywords
-    operators = ('body', 'data')
+    operators = ('url',)
 
     # Operator aliases
     aliases = ('equal', 'to', 'be')
+
+    # Supported suboperators
+    suboperators = (
+        UrlProtocolOperator,
+        UrlHostnameOperator,
+        UrlPathOperator,
+        UrlParamsOperator,
+        UrlPortOperator,
+    )
 
     # Show match diff on error
     show_diff = True
@@ -50,48 +59,47 @@ class BodyOperator(BaseOperator):
     # Enable raw reporting mode for this operator
     raw_mode = True
 
-    # List of suboperators
-    suboperators = (
-        JsonOperator,
-        JsonSchemaOperator,
-    )
-
     # Error message templates
     expected_message = Operator.Dsl.Message(
-        'a response body data equal to: {value}',
-        'a response body data not equal to: {value}',
+        'a request target URL equal to: {value}',
+        'a request target URL not equal to: {value}',
     )
 
     # Subject message template
     subject_message = Operator.Dsl.Message(
-        'a response body with data: {value}',
+        'a request target URL with value: {value}',
     )
 
     def _on_access(self, res):
-        if hasattr(res, 'body'):
-            self.ctx.subject = res.body
+        if hasattr(res, 'url'):
+            self.ctx.subject = res.url
 
-    def get_body(self, res):
+    def get_url(self, res):
         if isinstance(res, str):
             return res
-        if hasattr(res, 'body'):
-            return res.body
+        if hasattr(res, 'url'):
+            return res.url
         return None
 
-    def _match(self, res, expected):
-        # Get response body data
-        body = self.get_body(res)
+    def _match(self, res, expected, strict=False):
+        # Get response url data
+        url = self.get_url(res)
 
         if not isinstance(expected, str):
-            return False, ['body expectation must be a string']
+            return False, ['URL expectation must be a string']
 
-        if body is None:
-            return False, ['body is empty or cannot be readed']
+        if url is None:
+            return False, ['url is invalid or cannot be readed']
 
-        if len(body) == 0:
-            return False, ['body is empty']
+        if len(url) == 0:
+            return False, ['url is empty']
 
         self.subject = res.body
         self.expected = expected
 
-        return expected == body, []
+        if strict:
+            return expected == url, ['URLs are not equal']
+        else:
+            return expected in url, ['"{}" cannot be found in URL: {}'.format(
+                expected, url
+            )]

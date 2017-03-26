@@ -9,6 +9,7 @@ __all__ = ('operators', 'get')
 operators = (
     # Module name  # Operator class to import
     ('attributes', ),
+    ('url',         'UrlOperator'),
     ('body',        'BodyOperator'),
     ('json',        'JsonOperator'),
     ('method',      'MethodOperator'),

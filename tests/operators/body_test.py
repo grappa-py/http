@@ -25,3 +25,12 @@ def test_body_match(should):
     pook.get('foo.com', reply=200, response_json={'foo': 'bar'})
     res = requests.get('http://foo.com')
     res | should.have.body.json({'foo': 'bar'})
+
+
+@pook.on
+def test_body_length(should):
+    pook.get('foo.com', reply=200, response_body='hello world')
+    res = requests.get('http://foo.com')
+
+    res | should.have.body.length(11)
+    res | should.have.body.length.higher.than(10)

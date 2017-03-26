@@ -1,7 +1,7 @@
 coveralls~=1.1
 flake8~=3.3.0
 pytest~=3.0.3
-pook~=0.2.0
+pook~=0.2.1
 pytest-cov~=2.4.0
 pytest-flakes~=1.0.1
 Sphinx~=1.5.3

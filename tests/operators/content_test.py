@@ -27,4 +27,4 @@ def test_content_operator(should):
 
     with pytest.raises(AssertionError):
         pook.get('foo.com', reply=500)
-        requests.get('http://foo.com') | should.be.status('OK')
+        requests.get('http://foo.com') | should.have.content('json')

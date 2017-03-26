@@ -48,6 +48,10 @@ class HeaderOperator(BaseOperator):
         'a header with value: {value}',
     )
 
+    def _on_access(self, res):
+        if hasattr(res, 'headers'):
+            self.ctx.subject = res.headers
+
     def match_header(self, headers, key, value, includes=False):
         if key not in headers:
             return False, 'headers "{}" is not present'.format(key)
@@ -101,9 +105,8 @@ class HeaderOperator(BaseOperator):
         # Set headers
         self.header = header
 
-        # Assign match value
+        # If value is present, yield it as assertion subject
         if value is None:
-            self.ctx.value = values[0] if len(values) == 1 else values
-            # self.ctx.yielded = values[0] if len(values) == 1 else values
+            self.ctx.subject = values[0] if len(values) == 1 else values
 
         return passed, reasons
