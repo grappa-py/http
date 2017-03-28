@@ -10,6 +10,7 @@ About
 -----
 
 HTTP request/response assertion plugin for `grappa`_.
+``grappa-http`` extends ``grappa`` assertion operators with HTTP protocol testing.
 
 To get started, take a look to the `documentation`_, `tutorial`_ and `examples`_.
 
@@ -101,8 +102,8 @@ Features
 Supported HTTP clients
 ----------------------
 
--  [x] `requests`_
--  [_] `aiohttp`_ (``work in progress``)
+-  ✔  `requests`_
+-  ✘  `aiohttp`_ (``work in progress``)
 
 Installation
 ------------
