@@ -50,6 +50,9 @@ class BodyOperator(BaseOperator):
     # Enable raw reporting mode for this operator
     raw_mode = True
 
+    # Limit raw size characters
+    raw_size = 500
+
     # List of suboperators
     suboperators = (
         JsonOperator,
@@ -58,13 +61,13 @@ class BodyOperator(BaseOperator):
 
     # Error message templates
     expected_message = Operator.Dsl.Message(
-        'a response body data equal to: {value}',
-        'a response body data not equal to: {value}',
+        'a response body data equal to:\n    {value}',
+        'a response body data not equal to:\n    {value}',
     )
 
     # Subject message template
     subject_message = Operator.Dsl.Message(
-        'a response body with data: {value}',
+        'a response body with data:\n    {value}',
     )
 
     def _on_access(self, res):

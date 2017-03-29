@@ -39,18 +39,21 @@ class JsonSchemaOperator(BaseOperator):
     # Enable raw reporting mode for this operator
     raw_mode = True
 
+    # Limit raw size characters
+    raw_size = 500
+
     # Show match diff on error
     show_diff = True
 
     # Error message templates
     expected_message = Operator.Dsl.Message(
-        'a response JSON body that matches the JSONSchema: {value}',
-        'a response JSON body that does not matches the JSONSchem: {value}',
+        'a response JSON body that matches JSONSchema:\n    {value}',
+        'a response JSON body that does not matches JSONSchem:\n    {value}',
     )
 
     # Subject message template
     subject_message = Operator.Dsl.Message(
-        'a JSON body with data: {value}',
+        'a JSON body with data:\n    {value}',
     )
 
     def _on_access(self, res):

@@ -84,6 +84,68 @@ Showcase
         }
     })
 
+
+Full-featured error report example:
+
+.. code-block:: python
+
+    Traceback (most recent call last):
+      File "grappa-http/tests/http_test.py", line 38, in test_http_tutorial
+        res | should.have.body.equal.to('{\n    "foo": "baa"\n}')
+      File "grappa/grappa/test.py", line 208, in __ror__
+        return self.__overload__(value)
+      File "grappa/grappa/test.py", line 196, in __overload__
+        return self.__call__(subject, overload=True)
+      File "grappa/grappa/test.py", line 73, in __call__
+        return self._trigger() if overload else Test(subject)
+      File "grappa/grappa/test.py", line 113, in _trigger
+        raise err
+    AssertionError: Oops! Something went wrong!
+
+      The following assertion was not satisfied
+        subject "{\n    "foo": "bar"\n}" should have body equal to "{\n    "foo": "baa"\n}"
+
+      What we expected
+        a response body data equal to:
+            {
+                "foo": "baa"
+            }
+
+      What we got instead
+        a response body with data:
+            {
+                "foo": "bar"
+            }
+
+      Difference comparison
+        >   {
+        > -     "foo": "bar"
+        > ?               ^
+        > +     "foo": "baa"
+        > ?               ^
+        >   }
+
+      Where
+        File "grappa-http/tests/http_test.py", line 38, in test_http_tutorial
+
+        30|       res | should.have.content('json')
+        31|
+        32|       # Test response headers
+        33|       (res | (should.have.header('Content-Type')
+        34|               .that.should.be.equal('application/json')))
+        35|       res | should.have.header('Server').that.should.contain('nginx')
+        36|
+        37|       # Test response body
+        38| >     res | should.have.body.equal.to('{\n    "foo": "baa"\n}')
+        39|       res | should.have.body.that.contains('foo')
+        40|
+        41|       # Test response body length
+        42|       res | should.have.body.length.of(20)
+        43|       res | should.have.body.length.higher.than(10)
+        44|
+        45|       # Test response JSON body
+
+
 Features
 --------
 
