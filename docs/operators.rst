@@ -372,25 +372,25 @@ Asserts HTTP response body JSON against a JSONSchema.
 
 .. code-block:: python
 
-    res | should.have.jsonschema(schema)
-    res | should.have.jsonschema.equal.to(schema)
+    res | should.satisfy.jsonschema(schema)
+    res | should.satisfy.jsonschema.equal.to(schema)
 
 .. code-block:: python
 
-    res | expect.to.have.jsonschema(schema)
-    res | expect.to.have.jsonschema.equal.to(schema)
+    res | expect.to.satisfy.jsonschema(schema)
+    res | expect.to.satisfy.jsonschema.equal.to(schema)
 
 **Negation form**:
 
 .. code-block:: python
 
-    res | should.have_not.jsonschema(schema)
-    res | should.have_not.jsonschema.equal.to(schema)
+    res | should.do_not.satisfy.jsonschema(schema)
+    res | should.do_not.satisfy.jsonschema.equal.to(schema)
 
 .. code-block:: python
 
-    res | expect.to_not.have.jsonschema(schema)
-    res | expect.to_not.have.jsonschema.equal.to(schema)
+    res | expect.to_not.satisfy.jsonschema(schema)
+    res | expect.to_not.satisfy.jsonschema.equal.to(schema)
 
 verb
 ^^^^

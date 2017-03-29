@@ -11,20 +11,20 @@ class JsonSchemaOperator(BaseOperator):
     Example::
 
         # Should style
-        res | should.have.jsonschema(schema)
-        res | should.have.jsonschema.equal.to(schema)
+        res | should.satisfy.jsonschema(schema)
+        res | should.satisfy.jsonschema.equal.to(schema)
 
         # Should style - negation form
-        res | should.have_not.jsonschema(schema)
-        res | should.have_not.jsonschema.equal.to(schema)
+        res | should.do_not.satisfy.jsonschema(schema)
+        res | should.do_not.satisfy.jsonschema.equal.to(schema)
 
         # Expect style
-        res | expect.to.have.jsonschema(schema)
-        res | expect.to.have.jsonschema.equal.to(schema)
+        res | expect.to.satisfy.jsonschema(schema)
+        res | expect.to.satisfy.jsonschema.equal.to(schema)
 
         # Expect style - negation form
-        res | expect.to_not.have.jsonschema(schema)
-        res | expect.to_not.have.jsonschema.equal.to(schema)
+        res | expect.to_not.satisfy.jsonschema(schema)
+        res | expect.to_not.satisfy.jsonschema.equal.to(schema)
     """
 
     # Defines operator kind

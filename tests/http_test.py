@@ -47,7 +47,7 @@ def test_http_tutorial():
     res | should.have.json.have.key('foo') > should.be.equal.to('bar')
 
     # Validate response JSON bodies using JSONSchema
-    res | should.have.jsonschema({
+    res | should.implement.jsonschema({
         '$schema': 'http://json-schema.org/draft-04/schema#',
         'title': 'Response JSON',
         'type': 'object',
