@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*
 """
-`grappa_http`
+`grappa_http` provides HTTP protocol assertion for `grappa` testing library.
 
-Usage
------
+Example::
 
     import grappa
     import grappa_http
@@ -24,11 +23,12 @@ Reference
 ---------
 """
 # Export register function
+from . import adapters
 from .plugin import register
 from grappa import should, expect, use
 
 # Register Python operator
-__all__ = ('should', 'expect', 'register')
+__all__ = ('should', 'expect', 'register', 'adapters')
 
 # Package metadata
 __author__ = 'Tomas Aparicio'
