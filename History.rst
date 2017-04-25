@@ -1,6 +1,11 @@
-
 History
 =======
+
+v0.1.2 / 2017-04-25
+-------------------
+
+  * feat(api): add use_adapter() API for custom adapter registering
+  * feat(jsonschema): update example which uses satisfy attribute operator
 
 v0.1.1 / 2017-03-29
 -------------------
