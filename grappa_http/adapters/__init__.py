@@ -40,7 +40,7 @@ def use_adapter(*_adapters):
         *adapters (grappa_http.BaseAdapter): adapter or adapters to use.
     """
     for adapter in _adapters:
-        if not isinstance(adapter, BaseAdapter):
+        if not issubclass(adapter, BaseAdapter):
             raise TypeError('adapter must inherit from '
                             'grappa_http.BaseAdapter')
 
