@@ -1,5 +1,11 @@
+
 History
 =======
+
+v0.1.3 / 2017-04-26
+-------------------
+
+  * fix(adapters): use issubclass for adapter valid interface.
 
 v0.1.2 / 2017-04-25
 -------------------
