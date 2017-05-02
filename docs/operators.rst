@@ -7,7 +7,7 @@ Attributes
 response
 ^^^^^^^^
 
-Response semantic operator for better expressivity
+Response semantic operator for better expressivity.
 
 =======================  ========================
  **Type**                attribute
@@ -33,7 +33,7 @@ Accessors
 ok
 ^^
 
-Asserts HTTP response status should be `200`.
+Asserts HTTP response status should be ``200``.
 
 =======================  ========================
  **Type**                attribute
@@ -64,7 +64,7 @@ Asserts HTTP response status should be `200`.
 bad_request
 ^^^^^^^^^^^
 
-Asserts HTTP response status should be a server error (`400`-499`).
+Asserts HTTP response status should be a server error (``400``-``499``).
 
 =======================  ========================
  **Type**                attribute
@@ -95,7 +95,7 @@ Asserts HTTP response status should be a server error (`400`-499`).
 server_error
 ^^^^^^^^^^^^
 
-Asserts HTTP response status should be a server error (`500`-`599`).
+Asserts HTTP response status should be a server error (``500``-``599`).
 
 =======================  ========================
  **Type**                attribute
