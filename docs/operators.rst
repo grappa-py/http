@@ -7,7 +7,7 @@ Attributes
 response
 ^^^^^^^^
 
-Response semantic operator for better expressivity
+Response semantic operator for better expressivity.
 
 =======================  ========================
  **Type**                attribute
