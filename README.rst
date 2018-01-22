@@ -14,11 +14,6 @@ HTTP request/response assertion plugin for `grappa`_.
 
 To get started, take a look to the `documentation`_, `tutorial`_ and `examples`_.
 
-Status
-------
-
-``grappa-http`` is still **beta quality** software.
-
 Showcase
 --------
 
